@@ -1,0 +1,88 @@
+﻿<Window x:Class="Start.RoomService"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Start"
+        mc:Ignorable="d"
+         Title="Room Service" Height="450" Width="800" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="450">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFFAF8FA"/>
+            <GradientStop Color="#FFCE98D4" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <!--Install the "MahApps.Metro" package using the NuGet Package Manager-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="224*"/>
+            <ColumnDefinition Width="93*"/>
+            <ColumnDefinition Width="38*"/>
+            <ColumnDefinition Width="445*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.ColumnSpan="4">
+            <TabControl.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </TabControl.Background>
+            <TabItem Header="TODO*">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFAFAFA"/>
+                            <GradientStop Color="#FFC4A1DD" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="565,28,10,44">
+                        <ListBox.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FFA67BAB" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ListBox.Background>
+                    </ListBox>
+                    <Label Content="On the line" HorizontalAlignment="Left" Margin="565,3,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnUpdateChanges" Content="Update changes" HorizontalAlignment="Left" Margin="610,371,0,0" VerticalAlignment="Top" Width="128" FontSize="16" Foreground="#FF1726AE" FontWeight="Bold" FontFamily="Calibri"/>
+                    <Label Content="Name" HorizontalAlignment="Left" Margin="23,46,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Phone Number" HorizontalAlignment="Left" Margin="23,100,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Floor #" HorizontalAlignment="Left" Margin="161,150,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Room #" HorizontalAlignment="Left" Margin="23,204,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Room Type" HorizontalAlignment="Left" Margin="23,150,0,0" VerticalAlignment="Top"/>
+                    <TextBox TextWrapping="Wrap" Margin="38,126,635,262"/>
+                    <TextBox TextWrapping="Wrap" Margin="34,181,639,207"/>
+                    <TextBox TextWrapping="Wrap" Margin="164,181,509,207"/>
+                    <TextBox TextWrapping="Wrap" Margin="34,230,639,158"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="296,28,234,44">
+                        <Label Content="Todo" Margin="9,-15,201,320">
+                            <Label.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFDDD7EE"/>
+                                    <GradientStop Color="#FFF9F8F8" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Label.Background>
+                        </Label>
+                    </Border>
+                    <Button x:Name="btnChangeFoodSelection" Content="Change Food selection" HorizontalAlignment="Left" Margin="343,322,0,0" VerticalAlignment="Top" Width="176" FontSize="16" Foreground="#FF3716E8" FontWeight="Bold" FontFamily="Calibri"/>
+                    <Label Content="Lunch [QTY]" HorizontalAlignment="Left" Margin="432,59,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Breakfast [QTY]" HorizontalAlignment="Left" Margin="317,59,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Dinner [QTY]" HorizontalAlignment="Left" Margin="319,100,0,0" VerticalAlignment="Top"/>
+                    <TextBox TextWrapping="Wrap" Margin="40,73,633,315"/>
+                    <TextBox TextWrapping="Wrap" Margin="172,73,501,315"/>
+                    <TextBox TextWrapping="Wrap" Margin="324,82,385,302"/>
+                    <TextBox TextWrapping="Wrap" Margin="438,82,271,302"/>
+                    <TextBox TextWrapping="Wrap" Margin="324,122,385,262"/>
+                    <CheckBox Content="Cleaning" Margin="302,172,411,217"/>
+                    <CheckBox Content="Towels" Margin="388,172,331,217"/>
+                    <CheckBox Content="Sweetest Surprise" Margin="447,172,232,217"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Overview">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" CanUserResizeColumns="False" CanUserResizeRows="False" Background="#FFF0F0F0"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

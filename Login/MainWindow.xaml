@@ -1,0 +1,51 @@
+﻿<Window x:Class="Start.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Start"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Title="LoginPage" Height="450" Width="567" WindowStyle="ThreeDBorderWindow" BorderBrush="#FF875184" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Closing="OnClosing" >
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFB3CCE5"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="106*"/>
+            <ColumnDefinition Width="229*"/>
+            <ColumnDefinition Width="449*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btnLicense" Grid.Column="4" Content="license" HorizontalAlignment="Left" Margin="242,409,0,0" Width="76" Height="25" VerticalAlignment="Top" Click="ShowLicense"/>
+        <Label Grid.Column="2" Content="Login" HorizontalAlignment="Left" Margin="53,51,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="49" Width="132" FontSize="22" FontFamily="Elephant">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF468C7D"/>
+                    <GradientStop Color="#FF8F1DC0" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <Label Content="Username" Margin="92,95,205,308" Grid.Column="3" Grid.ColumnSpan="2" FontSize="18" FontWeight="Bold"/>
+        <!--<Label Content="Password" Margin="92,216,210,186" Grid.Column="3" Grid.ColumnSpan="2" FontSize="18" FontWeight="Bold"/>-->
+        <TextBox x:Name="txtUsername" TextWrapping="Wrap" Margin="92,140,82,251" Grid.Column="3" Grid.ColumnSpan="2" BorderBrush="#FFACC1FF" BorderThickness="2,2,2,2" TextChanged="UsernameChanged" VerticalContentAlignment="Center" Padding="10,0,10,0" FontSize="16"/>
+        <Button x:Name="btnSignIn" Content="Sign in" Margin="35,348,175,62" Grid.Column="4" FontWeight="Bold" FontSize="14" Click="btnSigninClicked"/>
+        <PasswordBox x:Name="txtPassword" Grid.Column="3" HorizontalAlignment="Left" Margin="92,253,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="46" BorderThickness="2,2,2,2" BorderBrush="#FFACC1FF" TargetUpdated="PasswordChanged" VerticalContentAlignment="Center" Padding="10,0,10,0" FontSize="16" Width="306.5325"/>
+        <TextBlock x:Name="txtBlockUsrnm" TextWrapping="Wrap" Text="Username" Margin="129,146,106,258" Grid.Column="3" Grid.ColumnSpan="2" FontSize="16" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+            </TextBlock.Foreground>
+        </TextBlock>
+        <!--<TextBlock x:Name="txtBlockPassword" TextWrapping="Wrap" Text="Password" Margin="129,265,0,0" Grid.Column="3" Grid.ColumnSpan="2" FontSize="16" IsHitTestVisible="False" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+            </TextBlock.Foreground>
+        </TextBlock>-->
+        <Label x:Name="lblError" Grid.Column="3" Content=" " HorizontalAlignment="Left" Margin="129,313,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="237" Foreground="#FFF90000" FontFamily="Cambria Math" FontSize="16" AutomationProperties.Name="lblError"/>
+
+    </Grid>
+</Window>
