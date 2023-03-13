@@ -7,72 +7,70 @@
         mc:Ignorable="d"
         Title="FrontEnd" Height="450" Width="800" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" MinWidth="800" MinHeight="450">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="322*"/>
-            <ColumnDefinition Width="279"/>
-            <ColumnDefinition Width="199*"/>
-            <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
-        <TabControl Grid.ColumnSpan="3">
+        <TabControl>
             <TabItem Header="Reservation">
-                <Grid>
+                <Grid x:Name="GridReservationInputs">
                     <Grid.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FFB6D6FC"/>
                             <GradientStop Color="White" Offset="1"/>
                         </LinearGradientBrush>
                     </Grid.Background>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="27*"/>
-                        <ColumnDefinition Width="93*"/>
-                        <ColumnDefinition Width="27"/>
-                        <ColumnDefinition Width="647*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Content="Name" HorizontalAlignment="Left" Margin="23,46,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="42"/>
-                    <Label Content="Birthday" HorizontalAlignment="Left" Margin="23,100,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="54"/>
-                    <Label Content="Address" HorizontalAlignment="Left" Margin="6,286,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="53"/>
-                    <Label Content="Your e-mail address" HorizontalAlignment="Center" Margin="0,248,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="97"/>
-                    <TextBox x:Name="txtFName" TextWrapping="Wrap" Margin="7,73,633,315" Grid.Column="1" Grid.ColumnSpan="3" AutomationProperties.Name="txtFName"/>
-                    <TextBox x:Name="txtLName" TextWrapping="Wrap" Margin="25,73,501,315" Grid.Column="3" AutomationProperties.Name="txtLName"/>
-                    <ComboBox x:Name="ComboDay" Grid.Column="1" Margin="3,128,28,256" IsEditable="True" Text="Day"/>
-                    <ComboBox x:Name="comboMonth" Grid.Column="1" Margin="0,128,614,256" ItemsSource="{Binding Days}" SelectedItem="{Binding SelectedMonth}" Grid.ColumnSpan="3" HorizontalAlignment="Right" Width="72" Text="Month" IsEditable="True"/>
-                    <TextBox x:Name="txtYear" TextWrapping="Wrap" Margin="38,128,542,259" Grid.Column="3" AutomationProperties.HelpText="Year" AutomationProperties.Name="txtYear"/>
-                    <Label Content="Gender" HorizontalAlignment="Left" Margin="23,150,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="49"/>
-                    <ComboBox x:Name="ComboGender" Grid.Column="1" Margin="3,178,28,209" AutomationProperties.HelpText="Gender"  IsEditable="True" Text="Gender">
-                        <ComboBoxItem>Male</ComboBoxItem>
-                        <ComboBoxItem>Female</ComboBoxItem>
-                    </ComboBox>
-                    <Label Content="Phone number" HorizontalAlignment="Left" Margin="23,204,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="88"/>
-                    <TextBox x:Name="txtPhone" TextWrapping="Wrap" Margin="8,229,641,159" Grid.ColumnSpan="3" AutomationProperties.Name="txtPhone" Grid.Column="1"/>
-                    <TextBox x:Name="txtEmail" TextWrapping="Wrap" Margin="8,272,641,116" Grid.ColumnSpan="3" AutomationProperties.Name="txtEmail" Grid.Column="1"/>
-                    <TextBox x:Name="txtStreet" TextWrapping="Wrap" Margin="7,305,642,82" Grid.ColumnSpan="3" AutomationProperties.Name="txtStreet" Grid.Column="1"/>
-                    <TextBox x:Name="txtSuite" TextWrapping="Wrap" Margin="7,331,43,56" AutomationProperties.Name="txtSuite" Grid.Column="1"/>
-                    <TextBox x:Name="txtCity" TextWrapping="Wrap" Margin="58,331,10,56" AutomationProperties.Name="txtCity" Grid.Column="1" Grid.ColumnSpan="2"/>
-                    <ComboBox x:Name="ComboState" Margin="4,361,36,26" AutomationProperties.HelpText="State" AutomationProperties.Name="comboState" Text="State" IsEditable="True" Grid.Column="1"/>
-                    <TextBox x:Name="txtZipCode" TextWrapping="Wrap" Margin="58,361,10,26" AutomationProperties.Name="txtZipCode" Grid.Column="1" Grid.ColumnSpan="2"/>
-                    <Label Content="Your Choices" HorizontalAlignment="Left" Margin="187,46,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="78"/>
-                    <ComboBox x:Name="ComboNoOfGuests" Grid.Column="3" Margin="199,74,364,310" IsEditable="True" Text="# of guests"/>
-                    <ComboBox x:Name="ComboRoom" Grid.Column="3" Margin="0,74,265,310"  HorizontalAlignment="Right" Width="56" AutomationProperties.Name="comboRoomType" IsEditable="True" Text="Room Type"/>
-                    <ComboBox x:Name="ComboFloorNo" Grid.Column="3" Margin="199,106,364,279" AutomationProperties.HelpText="Floor" AutomationProperties.Name="comboFloor" IsEditable="True" Text="Floor"/>
-                    <ComboBox x:Name="ComboRoomNo" Grid.Column="3" Margin="0,106,265,281"  HorizontalAlignment="Right" Width="56" AutomationProperties.Name="comboFloorNumber" IsEditable="True" Text="#"/>
-                    <Label Content="Entry [Date]" HorizontalAlignment="Left" Margin="187,132,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="72"/>
-                    <DatePicker Grid.Column="3" HorizontalAlignment="Left" Margin="199,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.071,0.499" Height="24" Width="102"/>
-                    <Label Content="Departure [Date]" HorizontalAlignment="Left" Margin="187,182,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="99"/>
-                    <DatePicker Grid.Column="3" HorizontalAlignment="Left" Margin="199,209,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.071,0.499" Height="24" Width="102"/>
-                    <Button x:Name="btnChangeFoodSelection" Content="Food and menu" HorizontalAlignment="Left" Margin="199,242,0,0" VerticalAlignment="Top" Width="176" FontSize="16" Foreground="#FF11ACBE" FontWeight="Bold" Grid.Column="3" Background="#FFF6EFEF" AutomationProperties.Name="btnMenu" FontFamily="Andalus" Height="28"/>
-                    <CheckBox Grid.Column="3" Content="Check in?" HorizontalAlignment="Left" Margin="172,278,0,0" VerticalAlignment="Top" Height="15" Width="70"/>
-                    <CheckBox Grid.Column="3" Content="Send sms?" HorizontalAlignment="Left" Margin="245,277,0,0" VerticalAlignment="Top" Height="15" Width="76"/>
-                    <CheckBox Grid.Column="3" Content="Food/supply status" HorizontalAlignment="Left" Margin="322,277,0,0" VerticalAlignment="Top" Height="15" Width="121"/>
-                    <Button x:Name="btnFinalizeBill" Content="Finalize Bill" HorizontalAlignment="Left" Margin="199,310,0,0" VerticalAlignment="Top" Width="176" FontSize="16" Foreground="#FF17D9A1" FontWeight="Bold" Grid.Column="3" Background="#FFF6EFEF" AutomationProperties.Name="btnFinalizeBill" FontFamily="Andalus" Height="28"/>
-                    <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="199,344,0,0" VerticalAlignment="Top" Width="176" FontSize="16" Foreground="#FF67CC4F" FontWeight="Bold" Grid.Column="3" Background="#FFF6EFEF" AutomationProperties.Name="btnSubmit" FontFamily="Andalus" BorderBrush="#FF9EF15B" Height="28"/>
-                    <ComboBox x:Name="ComboEditReservation" Grid.Column="3" Margin="469,77,16,310" AutomationProperties.Name="cobmoNoOfGuests" Text="Select reservation to edit" IsEditable="True"/>
-                    <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="475,203,0,0" VerticalAlignment="Top" Width="130" FontSize="16" Foreground="#FF7AD631" FontWeight="Bold" Grid.Column="3" Background="#FFF6EFEF" AutomationProperties.Name="btnUpdate" FontFamily="Andalus" BorderBrush="#FF76DDA5" Height="28"/>
-                    <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="475,245,0,0" VerticalAlignment="Top" Width="130" FontSize="16" Foreground="Red" FontWeight="Bold" Grid.Column="3" Background="Black" AutomationProperties.Name="btnDelete" FontFamily="Andalus" BorderBrush="#FFF61919" Height="28"/>
-                    <Button x:Name="btnEditReservation" Content="Edit existing reservation" HorizontalAlignment="Left" Margin="475,296,0,0" VerticalAlignment="Top" Width="130" Foreground="#FF7AD631" Grid.Column="3" Background="#FFF6EFEF" AutomationProperties.Name="btnEditReservation" FontFamily="Cambria Math" BorderBrush="#FF76DDA5" Height="25"/>
-                    <Button x:Name="btnNewReservation" Content="New reservation" HorizontalAlignment="Left" Margin="475,341,0,0" VerticalAlignment="Top" Width="130" Foreground="#FF7AD631" Grid.Column="3" Background="#FFF6EFEF" AutomationProperties.Name="btnNewReservation" FontFamily="Cambria Math" BorderBrush="#FF76DDA5" Click="OnClickBtnNewReservation" Height="18"/>
-                    <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="4" Margin="16,35,494,20"/>
-                    <Border BorderBrush="Black" BorderThickness="1" Margin="165,35,198,20" Grid.Column="3"/>
-                    <Border BorderBrush="Black" BorderThickness="1" Margin="462,35,4,20" Grid.Column="3"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="4" Margin="16,35,494,20" RenderTransformOrigin="0.41,0.225">
+                        <Grid Margin="-3,-44,3,44">
+                            <Label Content="Name" HorizontalAlignment="Left" Margin="23,46,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="42"/>
+                            <Label Content="Birthday" HorizontalAlignment="Left" Margin="23,100,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="54"/>
+                            <Label Content="Address" HorizontalAlignment="Left" Margin="6,286,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="53"/>
+                            <Label Content="Your e-mail address" HorizontalAlignment="Left" Margin="27,246,0,0" VerticalAlignment="Top" Height="26" Width="98"/>
+                            <TextBox x:Name="txtFName" TextWrapping="Wrap" AutomationProperties.Name="txtFName" Margin="27,73,171,254"/>
+                            <TextBox x:Name="txtLName" TextWrapping="Wrap" AutomationProperties.Name="txtLName" Margin="141,73,43,254"/>
+                            <ComboBox x:Name="ComboDay"  IsEditable="True" Text="Day" Margin="28,122,176,199"/>
+                            <ComboBox x:Name="comboMonth"  ItemsSource="{Binding Days}" SelectedItem="{Binding SelectedMonth}" HorizontalAlignment="Right" Width="72" Text="Month" IsEditable="True" Margin="0,124,95,200"/>
+                            <TextBox x:Name="txtYear" TextWrapping="Wrap" AutomationProperties.HelpText="Year" AutomationProperties.Name="txtYear" Margin="193,124,12,203"/>
+                            <Label Content="Gender" HorizontalAlignment="Left" Margin="23,150,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="49"/>
+                            <ComboBox x:Name="ComboGender"  AutomationProperties.HelpText="Gender"  IsEditable="True" Text="Gender" Margin="23,175,171,146">
+                                <ComboBoxItem>Male</ComboBoxItem>
+                                <ComboBoxItem>Female</ComboBoxItem>
+                            </ComboBox>
+                            <Label Content="Phone number" HorizontalAlignment="Left" Margin="23,204,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="88"/>
+                            <TextBox x:Name="txtPhone" TextWrapping="Wrap" AutomationProperties.Name="txtPhone" Margin="27,224,43,101"/>
+                            <TextBox x:Name="txtEmail" TextWrapping="Wrap" AutomationProperties.Name="txtEmail" Margin="28,269,43,63"/>
+                            <TextBox x:Name="txtStreet" TextWrapping="Wrap" AutomationProperties.Name="txtStreet" Margin="24,312,43,12"/>
+                            <TextBox x:Name="txtCity" TextWrapping="Wrap"  AutomationProperties.Name="txtCity" Margin="28,342,177,-12"/>
+                            <TextBox x:Name="txtSuite" TextWrapping="Wrap" AutomationProperties.Name="txtSuite" Margin="125,342,65,-10"/>
+                            <ComboBox x:Name="ComboState"  AutomationProperties.HelpText="State" AutomationProperties.Name="comboState" Text="State" IsEditable="True" Margin="24,370,166,-41"/>
+                            <TextBox x:Name="txtZipCode" TextWrapping="Wrap" AutomationProperties.Name="txtZipCode" Margin="125,370,68,-41"/>
+                        </Grid>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="305,35,198,20">
+                        <Grid>
+                            <Label x:Name="lblChoices" Content="Your Choices" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="3" Height="26" Width="78"/>
+                            <ComboBox x:Name="ComboNoOfGuests"  IsEditable="True" Text="# of guests" Margin="24,24,159,302"/>
+                            <ComboBox x:Name="ComboRoom"  HorizontalAlignment="Right" Width="88" AutomationProperties.Name="comboRoomType" IsEditable="True" Text="Room Type" Margin="0,24,57,302" SelectionChanged="OnChangingRoomType"/>
+                            <ComboBox x:Name="ComboFloorNo" AutomationProperties.HelpText="Floor" AutomationProperties.Name="comboFloor" IsEditable="True" Text="Floor" Margin="23,53,212,270"/>
+                            <ComboBox x:Name="ComboRoomNo" HorizontalAlignment="Right" Width="88" AutomationProperties.Name="comboFloorNumber" IsEditable="True" Text="#" Margin="0,53,57,270"/>
+                            <Label Content="Entry [Date]" HorizontalAlignment="Left" Height="26" Width="72" Margin="2,74,0,249"/>
+                            <DatePicker x:Name="EntryDate" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.071,0.499" Height="24" Width="102" Margin="28,105,0,0"/>
+                            <Label Content="Departure [Date]" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="99" Margin="6,129,0,0"/>
+                            <DatePicker x:Name="DepartureDate" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.071,0.499" Height="24" Width="102" Margin="28,155,0,0"/>
+                            <Button x:Name="btnFoodAndMenu" Content="Food and menu" HorizontalAlignment="Center" VerticalAlignment="Top" Width="176" FontSize="16" Foreground="#FF11ACBE" FontWeight="Bold" Background="#FFF6EFEF" AutomationProperties.Name="btnMenu" FontFamily="Andalus" Height="28" Click="OnClickBtnFoodAndMenu" Margin="0,189,0,0"/>
+                            <CheckBox x:Name="CheckCheckin" Content="Check in?" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="15" Width="70" Margin="6,227,0,0" Checked="OnCheckCheckin" Unchecked="OnUncheckCheckin"/>
+                            <CheckBox x:Name="CheckSendSMS" Content="Send sms?" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="76" Margin="81,227,0,0"/>
+                            <CheckBox x:Name="CheckFoodSupply" Content="Food/supply status" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="121" Margin="162,227,0,0" Unchecked="OnUncheckFoodSupply" Checked="OnCheckedFoodSupply"/>
+                            <Button x:Name="btnFinalizeBill" Content="Finalize Bill" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="176" FontSize="16" Foreground="#FF17D9A1" FontWeight="Bold" Background="#FFF6EFEF" AutomationProperties.Name="btnFinalizeBill" FontFamily="Andalus" Height="28" Margin="0,255,0,0" Click="OnClickFinalizeBill"/>
+                            <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Center" VerticalAlignment="Top" Width="176" FontSize="16" Foreground="#FF67CC4F" FontWeight="Bold" Background="#FFF6EFEF" AutomationProperties.Name="btnSubmit" FontFamily="Andalus" BorderBrush="#FF9EF15B" Height="28" Click="OnClickBtnSubmit" Margin="0,298,0,0"/>
+                        </Grid>
+                    </Border>
+
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="601,35,4,20">
+                        <Grid>
+                            <ComboBox x:Name="ComboEditReservation" AutomationProperties.Name="cobmoNoOfGuests" Text="Select reservation to edit" IsEditable="True" Margin="10,10,10,308" SelectionChanged="OnChangingReservationToBeEdited"/>
+                            <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" FontSize="16" Foreground="#FF7AD631" FontWeight="Bold" Background="#FFF6EFEF" AutomationProperties.Name="btnUpdate" FontFamily="Andalus" BorderBrush="#FF76DDA5" Height="28" Margin="0,183,0,0" Click="OnClickBtnUpdate"/>
+                            <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" FontSize="16" Foreground="Red" FontWeight="Bold" Background="Black" AutomationProperties.Name="btnDelete" FontFamily="Andalus" BorderBrush="#FFF61919" Height="28" Margin="0,222,0,0" Click="OnClickBtnDelete"/>
+                            <Button x:Name="btnEditReservation" Content="Edit existing reservation" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Foreground="#FF7AD631" Background="#FFF6EFEF" AutomationProperties.Name="btnEditReservation" FontFamily="Cambria Math" BorderBrush="#FF76DDA5" Height="25" Click="OnClickBtnEditReservation" Margin="0,266,0,0"/>
+                            <Button x:Name="btnNewReservation" Content="New reservation" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Foreground="#FF7AD631" Background="#FFF6EFEF" AutomationProperties.Name="btnNewReservation" FontFamily="Cambria Math" BorderBrush="#FF76DDA5" Click="OnClickBtnNewReservation" Height="18" Margin="0,308,0,0"/>
+                        </Grid>
+                    </Border>
                 </Grid>
             </TabItem>
             <TabItem Header="Universal Search">
@@ -83,11 +81,6 @@
                             <GradientStop Color="White" Offset="1"/>
                         </LinearGradientBrush>
                     </Grid.Background>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="21*"/>
-                        <ColumnDefinition Width="748*"/>
-                    </Grid.ColumnDefinitions>
                     <TextBlock x:Name="txtNotFound" TextWrapping="Wrap" Grid.Column="2" Margin="129,100,175,144" FontFamily="Cambria" FontSize="20" TextAlignment="Center">
                         <TextBlock.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -105,11 +98,11 @@
                         I am sure will find something.
 
                     </TextBlock>
-                    <Button Grid.Column="2" x:Name="btnSearch" HorizontalAlignment="Left" Margin="600,23,0,0" VerticalAlignment="Top" Height="36" Width="31" Click="OnClickBtnSearch">
-                        <Image Source="/search.png" Stretch="Fill"></Image>
+                    <Button x:Name="btnSearch" HorizontalAlignment="Left" Margin="674,23,0,0" VerticalAlignment="Top" Height="36" Width="31" Click="OnClickBtnSearch">
+                        <Image Source="/images/search.png" Stretch="Fill"></Image>
                     </Button>
-                    <TextBox x:Name="txtSearch" Grid.Column="2" HorizontalAlignment="Left" Margin="51,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="544" Height="36" Background="#FFCEE4F6" FontFamily="Cambria Math" FontSize="16" VerticalContentAlignment="Center"/>
-                    <DataGrid x:Name="GridSearch" Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,82,48,48" Width="700" MinWidth="700" MaxWidth="697" MaxHeight="280"/>
+                    <TextBox x:Name="txtSearch" HorizontalAlignment="Center" Margin="0,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="544" Height="36" Background="#FFCEE4F6" FontFamily="Cambria Math" FontSize="16" VerticalContentAlignment="Center"/>
+                    <DataGrid x:Name="GridSearch" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="50,82,44,48" Width="700" MinWidth="700" MaxWidth="697" MaxHeight="280"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Reservation Adv. View">

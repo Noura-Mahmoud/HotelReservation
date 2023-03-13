@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\breakfask.jpg" />
+    <None Remove="images\dinner.png" />
+    <None Remove="images\lunch.png" />
     <None Remove="search.png" />
   </ItemGroup>
 
@@ -22,10 +25,15 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Twilio" Version="6.2.5" />
+    <PackageReference Include="Twilio.AspNet.Core" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="search.png" />
+    <Resource Include="images\breakfask.jpg" />
+    <Resource Include="images\dinner.png" />
+    <Resource Include="images\lunch.png" />
+    <Resource Include="images\search.png" />
   </ItemGroup>
 
 </Project>

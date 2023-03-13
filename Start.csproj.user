@@ -7,6 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="FinalizeBillWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="FoodMenuWindow\FoodMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="FrontEndWindow\FrontEndWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -18,6 +24,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="FinalizeBillWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="FoodMenuWindow\FoodMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="FrontEndWindow\FrontEndWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

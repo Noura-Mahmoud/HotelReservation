@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 G:\ITI_mobile cross\C#\TestApp\Start\App.xaml
-4-1585056692
+6-1462868820
 
-17-641444652
-226-173167186
-FrontEndWindow\FrontEndWindow.xaml;LicenceWindow\LicenceWindow.xaml;Login\MainWindow.xaml;RoomServiceWindow\RoomService.xaml;
+212054802350
+352-1287826638
+FinalizeBillWindow.xaml;FoodMenuWindow\FoodMenu.xaml;FrontEndWindow\FrontEndWindow.xaml;LicenceWindow\LicenceWindow.xaml;Login\MainWindow.xaml;RoomServiceWindow\RoomService.xaml;
 
 False
 
