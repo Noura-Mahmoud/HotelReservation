@@ -89,28 +89,34 @@ namespace Start
             {
                 int.TryParse(txtBreakfastQuantity.Text, out int QuantityBreakfast);
                 response.breakfastQuantity = QuantityBreakfast;
+                response.breakfast = true;
             }
             else
             {
+                response.breakfast = false;
                 response.breakfastQuantity = 0;
             }
             if ((bool)CheckLunch.IsChecked)
             {
                 int.TryParse(txtLunchQuantity.Text, out int QuantityLunch);
                 response.lunchQuantity = QuantityLunch;
+                response.lunch = true;
             }
             else
             {
+                response.lunch = false;
                 response.lunchQuantity = 0;
             }
             if ((bool)CheckDinner.IsChecked)
             {
                 int.TryParse(txtDinnerQuantity.Text, out int QuantityDinner);
                 response.dinnerQuantity = QuantityDinner;
+                response.dinner = true;
             }
             else
             {
                 response.dinnerQuantity = 0;
+                response.dinner = false;
             }
             if ((bool)checkCleaning.IsChecked)
             {
@@ -174,5 +180,9 @@ namespace Start
             txtDinnerQuantity.IsEnabled = false;
         }
 
+        private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+           //OnClickBtnNext(new object(), new RoutedEventArgs());
+        }
     }
 }

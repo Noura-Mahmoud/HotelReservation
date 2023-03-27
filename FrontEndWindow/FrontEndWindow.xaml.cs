@@ -38,7 +38,7 @@ namespace Start
             Context = new HotelContext();
             reservation = new Reservation();
             foodBill = new int();
-            payment = new Payment();
+            payment = new Payment() { MM_YY_Of_Card = "1/1993", paymentCardNumber = "9999-9999-9999" };
             menuResponse = new FoodMenuResponse();
             Context.Reservations.Load();
 
@@ -307,12 +307,19 @@ namespace Start
         private void OnClickBtnFoodAndMenu(object sender, RoutedEventArgs e)
         {
             FoodMenu foodMenu = new FoodMenu();
+            FillFoodMenu(foodMenu);
+            //foodMenu.txtBreakfastQuantity.Text = menuResponse.breakfastQuantity.ToString();
+            //foodMenu.txtLunchQuantity.Text = menuResponse.lunchQuantity.ToString();
+            //foodMenu.txtDinnerQuantity.Text = menuResponse.dinnerQuantity.ToString();
+            //foodMenu.checkCleaning.IsChecked = menuResponse.cleaning;
+            //foodMenu.checkTowels.IsChecked = menuResponse.towels;
+            //foodMenu.checkSurprise.IsChecked = menuResponse.surprise;
             foodMenu.ShowDialog();
-            menuResponse= new FoodMenuResponse
+            menuResponse = new FoodMenuResponse
             {
-                //breakfast = foodMenu.response.breakfast,
-                //lunch = foodMenu.response.lunch,
-                //dinner = foodMenu.response.dinner,
+                breakfast = foodMenu.response.breakfast,
+                lunch = foodMenu.response.lunch,
+                dinner = foodMenu.response.dinner,
                 cleaning = foodMenu.response.cleaning,
                 towels = foodMenu.response.towels,
                 surprise = foodMenu.response.surprise,
@@ -331,6 +338,19 @@ namespace Start
             }
             // test
             //txtFName.Text = foodMenu.response.breakfastQuantity.ToString();
+        }
+        
+        private void FillFoodMenu(FoodMenu foodMenu)
+        {
+            foodMenu.txtBreakfastQuantity.Text = menuResponse.breakfastQuantity.ToString();
+            foodMenu.txtLunchQuantity.Text = menuResponse.lunchQuantity.ToString();
+            foodMenu.txtDinnerQuantity.Text = menuResponse.dinnerQuantity.ToString();
+            foodMenu.checkCleaning.IsChecked = menuResponse.cleaning;
+            foodMenu.checkTowels.IsChecked = menuResponse.towels;
+            foodMenu.checkSurprise.IsChecked = menuResponse.surprise;
+            foodMenu.CheckBreakfast.IsChecked = menuResponse.breakfast;
+            foodMenu.CheckLunch.IsChecked = menuResponse.lunch;
+            foodMenu.CheckDinner.IsChecked = menuResponse.dinner;
         }
         private void OnClickBtnEditReservation(object sender, RoutedEventArgs e)
         {
@@ -473,10 +493,10 @@ namespace Start
 
                 FinalizeBillWindow finalizeBillWindow = new FinalizeBillWindow();
                 finalizeBillWindow.Owner = this;
-                finalizeBillWindow.lblReservationBill.Content = roomPrice;
-                finalizeBillWindow.lblFoodBill.Content = foodBill;
+                FillBillDetails(finalizeBillWindow);
+                //finalizeBillWindow.lblReservationBill.Content = roomPrice;
+                //finalizeBillWindow.lblFoodBill.Content = foodBill;
                 finalizeBillWindow.ShowDialog();
-                payment = new Payment();
                 payment = new Payment
                 {
                     PaymentType = finalizeBillWindow.paymentDetails.PaymentType,
@@ -487,13 +507,22 @@ namespace Start
                     Total = finalizeBillWindow.paymentDetails.Total,
                     FoodBill = finalizeBillWindow.paymentDetails.FoodBill
                 };
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 //throw;
             }
+        }
+        private void FillBillDetails(FinalizeBillWindow finalizeBillWindow)
+        {
+            finalizeBillWindow.lblReservationBill.Content = roomPrice;
+            finalizeBillWindow.lblFoodBill.Content = foodBill;
+            finalizeBillWindow.ComboPaymentType.SelectedValue = payment.PaymentType;
+            finalizeBillWindow.txtPaymentCardNumber.Text = payment.paymentCardNumber;
+            finalizeBillWindow.txtCVC.Text = payment.CVC_Of_Card;
+            finalizeBillWindow.ComboMonth.SelectedValue = int.Parse( payment.MM_YY_Of_Card.Split('/')[0]);
+            finalizeBillWindow.ComboYear.SelectedValue = int.Parse(payment.MM_YY_Of_Card.Split('/')[1]);
         }
         //public int GetRoomPrice()
         //{

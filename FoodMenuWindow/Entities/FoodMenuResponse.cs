@@ -11,9 +11,9 @@ namespace Start.FoodMenuWindow.Entities
     [NotMapped]
     public class FoodMenuResponse
     {
-        //public bool breakfast { get; set; }
-        //public bool lunch { get; set; }
-        //public bool dinner { get; set; }
+        public bool breakfast { get; set; }
+        public bool lunch { get; set; }
+        public bool dinner { get; set; }
         public bool cleaning { get; set; }
         public bool towels { get; set; }
         public bool surprise { get; set; }
