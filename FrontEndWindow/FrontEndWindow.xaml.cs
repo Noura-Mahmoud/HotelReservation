@@ -76,12 +76,19 @@ namespace Start
                 //Context.Reservations.Load()
                 List<string> RoomType = new List<string>() { "Single", "Double", "Twin", "Duplex", "Suite" };
                 ComboRoom.ItemsSource = RoomType;
+                List<string> Genders = new List<string>() { "Male", "Female"};
+                ComboGender.ItemsSource = Genders;
                 // For combobox of Days
                 List<int> Days = Enumerable.Range(1, 31).ToList();
                 ComboDay.ItemsSource = Days;
                 // For combobox of Months
-                List<int> Months = Enumerable.Range(1, 12).ToList();
-                comboMonth.ItemsSource = Months;
+                //List<int> Months = Enumerable.Range(1, 12).ToList();
+                //comboMonth.ItemsSource = Months;
+                List<string> MonthNames = new List<string> {
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+                };
+                comboMonth.ItemsSource = MonthNames;
                 // For combobox of NoOfGuests
                 List<int> NoOfGuests = Enumerable.Range(1, 6).ToList();
                 ComboNoOfGuests.ItemsSource = NoOfGuests;
@@ -98,6 +105,7 @@ namespace Start
                 var occupiedRooms = Context.Reservations.Where(r => r.CheckIn == false).ToList();
                 ComboRoomNo.ItemsSource = occupiedRooms;
                 ComboRoomNo.DisplayMemberPath = "RoomNumber";
+                ComboRoomNo.SelectedValuePath = "RoomNumber";
 
                 CheckCheckin.IsChecked = false;
                 CheckFoodSupply.IsChecked = false;
@@ -165,13 +173,14 @@ namespace Start
                                         r.SupplyStatus,
                                         r.FoodBill
                                     }).ToList();
-                GridReservation.Items.Clear();
+                //GridReservation.Items.Clear();
                 GridReservation.ItemsSource = reservations;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBoxResult result = MessageBox.Show(this, "Make Sure of stablishing connection with Database",
-                                            "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult result = MessageBox.Show(ex.Message);
+                //MessageBoxResult result = MessageBox.Show(this, "Make Sure of stablishing connection with Database",
+                //                            "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 //throw;
             }
         }
@@ -181,8 +190,8 @@ namespace Start
             {
                 var reservedRooms = Context.Reservations.Where(r => r.CheckIn == true).ToList();
                 var occupiedRooms = Context.Reservations.Where(r => r.CheckIn == false).ToList();
-                ListOccupied.Items.Clear();
-                ListReserved.Items.Clear();
+                //ListOccupied.Items.Clear();
+                //ListReserved.Items.Clear();
                 ListOccupied.ItemsSource = occupiedRooms;
                 ListReserved.ItemsSource = reservedRooms;
             }
@@ -196,8 +205,10 @@ namespace Start
         {
             
             ClearTextBoxes(GridReservationInputs);
+            ClearComboBoxes(GridReservationInputs);
             btnUpdate.Visibility = Visibility.Collapsed;
             btnDelete.Visibility = Visibility.Collapsed;
+            ComboEditReservation.Visibility = Visibility.Collapsed;
             btnSubmit.Visibility = Visibility.Visible;
 
             #region old code
@@ -226,19 +237,20 @@ namespace Start
         }
         private void ClearTextBoxes(DependencyObject parent)
         {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(parent, i);
-                if (child is TextBox)
-                {
-                    TextBox textBox = (TextBox)child;
-                    textBox.Text = "";
-                }
-                else
-                {
-                    ClearTextBoxes(child);
-                }
-            }
+            //for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            //{
+            //    DependencyObject child = VisualTreeHelper.GetChild(parent, i);
+            //    if (child is TextBox)
+            //    {
+            //        TextBox textBox = (TextBox)child;
+            //        textBox.Text = "";
+            //    }
+            //    else
+            //    {
+            //        ClearTextBoxes(child);
+            //    }
+            //}
+            txtFName.Text = txtLName.Text = txtYear.Text = txtPhone.Text = txtEmail.Text = txtStreet.Text = txtCity.Text = txtSuite.Text = txtZipCode.Text = string.Empty;
         }
 
         //Clear Comboboxes
@@ -375,9 +387,10 @@ namespace Start
             {
                 Context.Add(reservation);
                 Context.SaveChanges();
-                ReservationTabInitializations();
+                //ReservationTabInitializations();
                 LoadDataToGridView();
                 LoadRoomAvailablityTab();
+                OnClickBtnNewReservation(new object(), new RoutedEventArgs());
             }
             catch (Exception ex)
             {
@@ -393,10 +406,12 @@ namespace Start
             reservation.LastName = txtLName.Text;
             int.TryParse(txtYear.Text, out int year);
             int.TryParse(ComboDay.SelectedValue.ToString(), out int day);
-            int.TryParse(comboMonth.SelectedValue.ToString(), out int month);
-            reservation.BirthDay = new DateOnly(year, month, day).ToString();
-            //newReservation.BirthDay = ComboDay.SelectedValue.ToString()+"/"+comboMonth.SelectedValue.ToString()+"/"+txtYear.Text;
-            reservation.Gender = ComboGender.SelectedItem.ToString();
+            //int.TryParse(comboMonth.SelectedValue.ToString(), out int month);
+            string month = comboMonth.SelectedValue.ToString();
+            //reservation.BirthDay = new DateOnly(year, month, day).ToString();
+            reservation.BirthDay = comboMonth.SelectedValue.ToString()+" -"+ day.ToString() +"- "+ txtYear.Text;
+            //reservation.Gender = ComboGender.SelectedItem.ToString();
+            reservation.Gender = ComboGender.SelectedValue.ToString();
             reservation.PhoneNumber = txtPhone.Text;
             reservation.EmailAddress = txtEmail.Text;
             int.TryParse(ComboNoOfGuests.SelectedValue.ToString(), out int noOfGuests);
@@ -411,7 +426,8 @@ namespace Start
             //int.TryParse(ComboFloorNo.SelectedValue.ToString(), out int floor);
             reservation.RoomFloor = ComboFloorNo.SelectedValue.ToString();
             //int.TryParse(ComboRoomNo.SelectedValue.ToString(), out int roomNo);
-            reservation.RoomNumber = ComboRoomNo.SelectedItem.ToString();
+            //MessageBox.Show(ComboRoomNo.SelectedValue.ToString());
+            reservation.RoomNumber = ComboRoomNo.SelectedValue.ToString();
             reservation.TotalBill = (float)payment.Total;
             reservation.PaymentType = payment.PaymentType;
             reservation.CardType = payment.CardType;
@@ -433,56 +449,59 @@ namespace Start
         public int roomPrice = 0;
         private void OnChangingRoomType(object sender, SelectionChangedEventArgs e)
         {
-            try
+            if (ComboRoom.SelectedValue != null)
             {
-                if (ComboRoom.SelectedValue.Equals("Single"))
+                try
                 {
-                    roomPrice = 149;
-                    ComboFloorNo.SelectedValue = 1;
+                    if (ComboRoom.SelectedValue.Equals("Single"))
+                    {
+                        roomPrice = 149;
+                        ComboFloorNo.SelectedValue = 1;
+                    }
+                    else if (ComboRoom.SelectedValue.Equals("Double"))
+                    {
+                        roomPrice = 299;
+                        ComboFloorNo.SelectedValue = 2;
+                    }
+                    else if (ComboRoom.SelectedValue.Equals("Twin"))
+                    {
+                        roomPrice = 349;
+                        ComboFloorNo.SelectedValue = 3;
+                    }
+                    else if (ComboRoom.SelectedValue.Equals("Duplex"))
+                    {
+                        roomPrice = 399;
+                        ComboFloorNo.SelectedValue = 4;
+                    }
+                    else if (ComboRoom.SelectedValue.Equals("Suite"))
+                    {
+                        roomPrice = 499;
+                        ComboFloorNo.SelectedValue = 5;
+                    }
                 }
-                else if (ComboRoom.SelectedValue.Equals("Double"))
+                catch (Exception ex)
                 {
-                    roomPrice = 299;
-                    ComboFloorNo.SelectedValue = 2;
+                    MessageBox.Show(ex.Message);
+                    //throw;
                 }
-                else if (ComboRoom.SelectedValue.Equals("Twin"))
+                int selectedTemp = 0;
+                string selected; 
+                try
                 {
-                    roomPrice = 349;
-                    ComboFloorNo.SelectedValue = 3;
+                    int.TryParse(ComboNoOfGuests.SelectedItem.ToString(), out selectedTemp);
+                    selected = ComboNoOfGuests.SelectedItem.ToString();
+                    int.TryParse(selected, out selectedTemp);
+                    //selectedTemp = Convert.ToInt32(selected);
+                    if (selectedTemp >= 3)
+                    {
+                        roomPrice += (selectedTemp * 5);
+                    }
                 }
-                else if (ComboRoom.SelectedValue.Equals("Duplex"))
+                catch (Exception)
                 {
-                    roomPrice = 399;
-                    ComboFloorNo.SelectedValue = 4;
+                    MessageBoxResult result = MessageBox.Show("Enter # of guests first");
+                    //throw;
                 }
-                else if (ComboRoom.SelectedValue.Equals("Suite"))
-                {
-                    roomPrice = 499;
-                    ComboFloorNo.SelectedValue = 5;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                //throw;
-            }
-            int selectedTemp = 0;
-            string selected; 
-            try
-            {
-                int.TryParse(ComboNoOfGuests.SelectedItem.ToString(), out selectedTemp);
-                selected = ComboNoOfGuests.SelectedItem.ToString();
-                int.TryParse(selected, out selectedTemp);
-                //selectedTemp = Convert.ToInt32(selected);
-                if (selectedTemp >= 3)
-                {
-                    roomPrice += (selectedTemp * 5);
-                }
-            }
-            catch (Exception)
-            {
-                MessageBoxResult result = MessageBox.Show("Enter # of guests first");
-                //throw;
             }
         }
 
@@ -579,7 +598,10 @@ namespace Start
 
         private void OnChangingReservationToBeEdited(object sender, SelectionChangedEventArgs e)
         {
-            FillEditingReservationData();
+            if(ComboEditReservation.SelectedValue != null)
+            {
+                FillEditingReservationData();
+            }
         }
         private void FillEditingReservationData()
         {
@@ -592,10 +614,10 @@ namespace Start
                 {
                     txtFName.Text = currentReservation.FirstName;
                     txtLName.Text = currentReservation.LastName;
-                    //ComboDay.Text = currentReservation.BirthDay.Substring(0, currentReservation.BirthDay.IndexOf('-')).Trim();
-                    //comboMonth.Text = currentReservation.BirthDay.Substring(currentReservation.BirthDay.IndexOf('-') + 1, 1).Trim();
-                    comboMonth.Text = currentReservation.BirthDay.Substring(0, currentReservation.BirthDay.IndexOf('-')).Trim();
-                    ComboDay.Text = currentReservation.BirthDay.Substring(currentReservation.BirthDay.IndexOf('-') + 1, 1).Trim();
+
+                    comboMonth.SelectedValue = currentReservation.BirthDay.Substring(0, currentReservation.BirthDay.IndexOf('-')).Trim();
+                    ComboDay.SelectedValue = int.Parse( currentReservation.BirthDay.Substring(currentReservation.BirthDay.IndexOf('-') + 1, 1).Trim());
+                    lblChoices.Content = currentReservation.BirthDay.Substring(currentReservation.BirthDay.IndexOf('-') + 1, 1).Trim();
 
                     txtYear.Text = currentReservation.BirthDay.Substring(currentReservation.BirthDay.Length - Math.Min(4, currentReservation.BirthDay.Length)).Trim();
 
@@ -610,10 +632,10 @@ namespace Start
                     ComboState.SelectedValue = currentReservation.State;
                     txtZipCode.Text = currentReservation.ZipCode;
                     ComboRoom.SelectedItem = currentReservation.RoomType.Trim();
-                    ComboFloorNo.Text = currentReservation.RoomFloor;
+                    ComboFloorNo.SelectedValue = int.Parse(currentReservation.RoomFloor);
+                    //ComboFloorNo.Text = currentReservation.RoomFloor;
                     //int.TryParse(ComboRoomNo.SelectedValue.ToString(), out int roomNo);
-                    //ComboRoomNo.SelectedItem = currentReservation.RoomNumber.Trim();
-                    ComboRoomNo.Text = currentReservation.RoomNumber.Trim();
+                    ComboRoomNo.SelectedValue = currentReservation.RoomNumber;
                     payment.Total = currentReservation.TotalBill;
                     payment.PaymentType = currentReservation.PaymentType;
                     payment.CardType = currentReservation.CardType;
@@ -624,8 +646,14 @@ namespace Start
                     DepartureDate.SelectedDate = currentReservation.LeavingTime;
                     CheckCheckin.IsChecked = currentReservation.CheckIn;
                     menuResponse.breakfastQuantity = currentReservation.BreakFast;
+                    if (currentReservation.BreakFast > 0)
+                        menuResponse.breakfast = true;
                     menuResponse.lunchQuantity = currentReservation.Lunch;
+                    if (currentReservation.Lunch > 0)
+                        menuResponse.lunch = true;
                     menuResponse.dinnerQuantity = currentReservation.Dinner;
+                    if (currentReservation.Dinner > 0)
+                        menuResponse.dinner = true;
                     CheckFoodSupply.IsChecked = currentReservation.SupplyStatus;
                     menuResponse.cleaning = currentReservation.Cleaning;
                     menuResponse.towels = currentReservation.Towel;
@@ -650,8 +678,8 @@ namespace Start
             try
             {
                 var toBeUpdated = Context.Reservations.FirstOrDefault(r => r.Id == reservation.Id);
-                if(toBeUpdated != null)
-                {
+                //if(toBeUpdated != null)
+                //{
                     // toBeUpdated = reservation;
                     toBeUpdated.FirstName = reservation.FirstName;
                     toBeUpdated.LastName = reservation.LastName;
@@ -685,13 +713,13 @@ namespace Start
                     toBeUpdated.SSurprise = reservation.SSurprise;
                     toBeUpdated.SupplyStatus = reservation.SupplyStatus;
                     toBeUpdated.FoodBill = reservation.FoodBill;
-                }
+                //}
 
                 Context.SaveChanges();
                 ReservationTabInitializations();
                 LoadDataToGridView();
                 LoadRoomAvailablityTab();
-
+                ClearComboBoxes(GridReservationInputs);
             }
             catch (Exception ex)
             {
@@ -710,7 +738,8 @@ namespace Start
                 Context.Remove(currentReservation);
                 Context.SaveChanges();
                 ReservationTabInitializations();
-                //ClearTextBoxes(GridReservationInputs);
+                ClearTextBoxes(GridReservationInputs);
+                ClearComboBoxes(GridReservationInputs);
                 //btnUpdate.Visibility = Visibility.Collapsed;
                 //btnDelete.Visibility = Visibility.Collapsed;
                 //btnSubmit.Visibility = Visibility.Visible;

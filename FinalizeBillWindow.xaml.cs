@@ -42,8 +42,10 @@ namespace Start
                 //lblReservationBill,lblFoodBill got their values from the parent window 
                 double roomBill = Convert.ToDouble(lblReservationBill.Content.ToString());
                 double roomTax = roomBill * 0.07;
+                roomTax = Math.Round(roomTax,2);
                 int.TryParse(lblFoodBill.Content.ToString(), out int foodBill);
                 double Total = roomBill + roomTax + foodBill;
+                Total = Math.Round(Total, 2);
                 lblCurrentBill.Content = roomBill;
                 lblTax.Content = roomTax;
                 lblTotal.Content = Total;

@@ -21,17 +21,14 @@
                             <Label Content="Name" HorizontalAlignment="Left" Margin="23,46,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="42"/>
                             <Label Content="Birthday" HorizontalAlignment="Left" Margin="23,100,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="54"/>
                             <Label Content="Address" HorizontalAlignment="Left" Margin="6,286,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="53"/>
-                            <Label Content="Your e-mail address" HorizontalAlignment="Left" Margin="27,246,0,0" VerticalAlignment="Top" Height="26" Width="98"/>
+                            <Label Content="Your e-mail address" HorizontalAlignment="Left" Margin="27,246,0,0" VerticalAlignment="Top" Height="26" Width="124"/>
                             <TextBox x:Name="txtFName" TextWrapping="Wrap" AutomationProperties.Name="txtFName" Margin="27,73,171,254" MaxWidth="84"/>
                             <TextBox x:Name="txtLName" TextWrapping="Wrap" AutomationProperties.Name="txtLName" Margin="141,73,43,254" MaxWidth="98"/>
                             <ComboBox x:Name="ComboDay"  IsEditable="True" Text="Day" Margin="28,122,176,199" MaxWidth="87"/>
                             <ComboBox x:Name="comboMonth"  ItemsSource="{Binding Days}" SelectedItem="{Binding SelectedMonth}" HorizontalAlignment="Right" Width="72" Text="Month" IsEditable="True" Margin="0,124,95,200" MaxWidth="72"/>
                             <TextBox x:Name="txtYear" TextWrapping="Wrap" AutomationProperties.HelpText="Year" AutomationProperties.Name="txtYear" Margin="193,124,12,203" MaxWidth="77"/>
                             <Label Content="Gender" HorizontalAlignment="Left" Margin="23,150,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="49"/>
-                            <ComboBox x:Name="ComboGender"  AutomationProperties.HelpText="Gender"  IsEditable="True" Text="Gender" Margin="23,175,171,146" MaxWidth="88">
-                                <ComboBoxItem>Male</ComboBoxItem>
-                                <ComboBoxItem>Female</ComboBoxItem>
-                            </ComboBox>
+                            <ComboBox x:Name="ComboGender"  AutomationProperties.HelpText="Gender"  IsEditable="True" Text="Gender" Margin="23,175,171,146" MaxWidth="88"/>
                             <Label Content="Phone number" HorizontalAlignment="Left" Margin="23,204,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="88"/>
                             <TextBox x:Name="txtPhone" TextWrapping="Wrap" AutomationProperties.Name="txtPhone" Margin="27,224,43,101" Width="215" MaxWidth="215"/>
                             <TextBox x:Name="txtEmail" TextWrapping="Wrap" AutomationProperties.Name="txtEmail" Margin="28,269,43,63" Width="215" MaxWidth="215"/>

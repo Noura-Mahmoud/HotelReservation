@@ -11,7 +11,7 @@ namespace Start.Context
     public class HotelContext: DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-           => optionsBuilder.UseSqlServer(@"Data Source=Mikasa;Initial Catalog=Hotel;Integrated Security=true;Encrypt=false");
+           => optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=Hotel;Integrated Security=true;Encrypt=false");
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
