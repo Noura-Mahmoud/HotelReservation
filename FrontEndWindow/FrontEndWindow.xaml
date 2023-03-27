@@ -22,37 +22,37 @@
                             <Label Content="Birthday" HorizontalAlignment="Left" Margin="23,100,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="54"/>
                             <Label Content="Address" HorizontalAlignment="Left" Margin="6,286,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="53"/>
                             <Label Content="Your e-mail address" HorizontalAlignment="Left" Margin="27,246,0,0" VerticalAlignment="Top" Height="26" Width="98"/>
-                            <TextBox x:Name="txtFName" TextWrapping="Wrap" AutomationProperties.Name="txtFName" Margin="27,73,171,254"/>
-                            <TextBox x:Name="txtLName" TextWrapping="Wrap" AutomationProperties.Name="txtLName" Margin="141,73,43,254"/>
-                            <ComboBox x:Name="ComboDay"  IsEditable="True" Text="Day" Margin="28,122,176,199"/>
-                            <ComboBox x:Name="comboMonth"  ItemsSource="{Binding Days}" SelectedItem="{Binding SelectedMonth}" HorizontalAlignment="Right" Width="72" Text="Month" IsEditable="True" Margin="0,124,95,200"/>
-                            <TextBox x:Name="txtYear" TextWrapping="Wrap" AutomationProperties.HelpText="Year" AutomationProperties.Name="txtYear" Margin="193,124,12,203"/>
+                            <TextBox x:Name="txtFName" TextWrapping="Wrap" AutomationProperties.Name="txtFName" Margin="27,73,171,254" MaxWidth="84"/>
+                            <TextBox x:Name="txtLName" TextWrapping="Wrap" AutomationProperties.Name="txtLName" Margin="141,73,43,254" MaxWidth="98"/>
+                            <ComboBox x:Name="ComboDay"  IsEditable="True" Text="Day" Margin="28,122,176,199" MaxWidth="87"/>
+                            <ComboBox x:Name="comboMonth"  ItemsSource="{Binding Days}" SelectedItem="{Binding SelectedMonth}" HorizontalAlignment="Right" Width="72" Text="Month" IsEditable="True" Margin="0,124,95,200" MaxWidth="72"/>
+                            <TextBox x:Name="txtYear" TextWrapping="Wrap" AutomationProperties.HelpText="Year" AutomationProperties.Name="txtYear" Margin="193,124,12,203" MaxWidth="77"/>
                             <Label Content="Gender" HorizontalAlignment="Left" Margin="23,150,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="49"/>
-                            <ComboBox x:Name="ComboGender"  AutomationProperties.HelpText="Gender"  IsEditable="True" Text="Gender" Margin="23,175,171,146">
+                            <ComboBox x:Name="ComboGender"  AutomationProperties.HelpText="Gender"  IsEditable="True" Text="Gender" Margin="23,175,171,146" MaxWidth="88">
                                 <ComboBoxItem>Male</ComboBoxItem>
                                 <ComboBoxItem>Female</ComboBoxItem>
                             </ComboBox>
                             <Label Content="Phone number" HorizontalAlignment="Left" Margin="23,204,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="88"/>
-                            <TextBox x:Name="txtPhone" TextWrapping="Wrap" AutomationProperties.Name="txtPhone" Margin="27,224,43,101"/>
-                            <TextBox x:Name="txtEmail" TextWrapping="Wrap" AutomationProperties.Name="txtEmail" Margin="28,269,43,63"/>
-                            <TextBox x:Name="txtStreet" TextWrapping="Wrap" AutomationProperties.Name="txtStreet" Margin="24,312,43,12"/>
+                            <TextBox x:Name="txtPhone" TextWrapping="Wrap" AutomationProperties.Name="txtPhone" Margin="27,224,43,101" Width="215" MaxWidth="215"/>
+                            <TextBox x:Name="txtEmail" TextWrapping="Wrap" AutomationProperties.Name="txtEmail" Margin="28,269,43,63" Width="215" MaxWidth="215"/>
+                            <TextBox x:Name="txtStreet" TextWrapping="Wrap" AutomationProperties.Name="txtStreet" Margin="24,312,43,12" Width="215" MaxWidth="215"/>
                             <TextBox x:Name="txtCity" TextWrapping="Wrap"  AutomationProperties.Name="txtCity" Margin="28,342,177,-12"/>
                             <TextBox x:Name="txtSuite" TextWrapping="Wrap" AutomationProperties.Name="txtSuite" Margin="125,342,65,-10"/>
-                            <ComboBox x:Name="ComboState"  AutomationProperties.HelpText="State" AutomationProperties.Name="comboState" Text="State" IsEditable="True" Margin="24,370,166,-41"/>
+                            <ComboBox x:Name="ComboState"  AutomationProperties.HelpText="State" AutomationProperties.Name="comboState" Text="State" IsEditable="True" Margin="24,370,166,-41" MaxWidth="92"/>
                             <TextBox x:Name="txtZipCode" TextWrapping="Wrap" AutomationProperties.Name="txtZipCode" Margin="125,370,68,-41"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" BorderThickness="1" Margin="305,35,198,20">
                         <Grid>
                             <Label x:Name="lblChoices" Content="Your Choices" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="3" Height="26" Width="78"/>
-                            <ComboBox x:Name="ComboNoOfGuests"  IsEditable="True" Text="# of guests" Margin="24,24,159,302"/>
-                            <ComboBox x:Name="ComboRoom"  HorizontalAlignment="Right" Width="88" AutomationProperties.Name="comboRoomType" IsEditable="True" Text="Room Type" Margin="0,24,57,302" SelectionChanged="OnChangingRoomType"/>
-                            <ComboBox x:Name="ComboFloorNo" AutomationProperties.HelpText="Floor" AutomationProperties.Name="comboFloor" IsEditable="True" Text="Floor" Margin="23,53,212,270"/>
-                            <ComboBox x:Name="ComboRoomNo" HorizontalAlignment="Right" Width="88" AutomationProperties.Name="comboFloorNumber" IsEditable="True" Text="#" Margin="0,53,57,270"/>
+                            <ComboBox x:Name="ComboNoOfGuests"  IsEditable="True" Text="# of guests" Margin="24,24,159,302" MaxWidth="106"/>
+                            <ComboBox x:Name="ComboRoom"  HorizontalAlignment="Right" Width="88" AutomationProperties.Name="comboRoomType" IsEditable="True" Text="Room Type" Margin="0,24,57,302" SelectionChanged="OnChangingRoomType" MaxWidth="88"/>
+                            <ComboBox x:Name="ComboFloorNo" AutomationProperties.HelpText="Floor" AutomationProperties.Name="comboFloor" IsEditable="True" Text="Floor" Margin="23,53,212,270" MaxWidth="54"/>
+                            <ComboBox x:Name="ComboRoomNo" HorizontalAlignment="Right" Width="88" AutomationProperties.Name="comboFloorNumber" IsEditable="True" Text="#" Margin="0,53,57,270" MaxWidth="88"/>
                             <Label Content="Entry [Date]" HorizontalAlignment="Left" Height="26" Width="72" Margin="2,74,0,249"/>
-                            <DatePicker x:Name="EntryDate" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.071,0.499" Height="24" Width="102" Margin="28,105,0,0"/>
+                            <DatePicker x:Name="EntryDate" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.071,0.499" Height="24" Width="102" Margin="28,105,0,0" MaxWidth="102"/>
                             <Label Content="Departure [Date]" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="99" Margin="6,129,0,0"/>
-                            <DatePicker x:Name="DepartureDate" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.071,0.499" Height="24" Width="102" Margin="28,155,0,0"/>
+                            <DatePicker x:Name="DepartureDate" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.071,0.499" Height="24" Width="102" Margin="28,155,0,0" MaxWidth="102"/>
                             <Button x:Name="btnFoodAndMenu" Content="Food and menu" HorizontalAlignment="Center" VerticalAlignment="Top" Width="176" FontSize="16" Foreground="#FF11ACBE" FontWeight="Bold" Background="#FFF6EFEF" AutomationProperties.Name="btnMenu" FontFamily="Andalus" Height="28" Click="OnClickBtnFoodAndMenu" Margin="0,189,0,0"/>
                             <CheckBox x:Name="CheckCheckin" Content="Check in?" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="15" Width="70" Margin="6,227,0,0" Checked="OnCheckCheckin" Unchecked="OnUncheckCheckin"/>
                             <CheckBox x:Name="CheckSendSMS" Content="Send sms?" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="76" Margin="81,227,0,0"/>
@@ -64,7 +64,7 @@
 
                     <Border BorderBrush="Black" BorderThickness="1" Margin="601,35,4,20">
                         <Grid>
-                            <ComboBox x:Name="ComboEditReservation" AutomationProperties.Name="cobmoNoOfGuests" Text="Select reservation to edit" IsEditable="True" Margin="10,10,10,308" SelectionChanged="OnChangingReservationToBeEdited"/>
+                            <ComboBox x:Name="ComboEditReservation" AutomationProperties.Name="cobmoNoOfGuests" Text="Select reservation to edit" IsEditable="True" Margin="10,10,10,308" SelectionChanged="OnChangingReservationToBeEdited" MaxWidth="167"/>
                             <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" FontSize="16" Foreground="#FF7AD631" FontWeight="Bold" Background="#FFF6EFEF" AutomationProperties.Name="btnUpdate" FontFamily="Andalus" BorderBrush="#FF76DDA5" Height="28" Margin="0,183,0,0" Click="OnClickBtnUpdate"/>
                             <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" FontSize="16" Foreground="Red" FontWeight="Bold" Background="Black" AutomationProperties.Name="btnDelete" FontFamily="Andalus" BorderBrush="#FFF61919" Height="28" Margin="0,222,0,0" Click="OnClickBtnDelete"/>
                             <Button x:Name="btnEditReservation" Content="Edit existing reservation" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Foreground="#FF7AD631" Background="#FFF6EFEF" AutomationProperties.Name="btnEditReservation" FontFamily="Cambria Math" BorderBrush="#FF76DDA5" Height="25" Click="OnClickBtnEditReservation" Margin="0,266,0,0"/>
@@ -128,7 +128,7 @@
                     <Label Content="Room #  |  Type   |  ID #   |   Name   |   Phone #" HorizontalAlignment="Left" Margin="426,46,0,0" VerticalAlignment="Top" Height="32" Width="268"/>
                     <Label Content="Occupied" HorizontalAlignment="Left" Margin="23,14,0,0" VerticalAlignment="Top" Height="32" Width="268" FontWeight="Bold"/>
                     <Label Content="Reserved" HorizontalAlignment="Left" Margin="426,14,0,0" VerticalAlignment="Top" Height="32" Width="268" FontWeight="Bold"/>
-                    <ListBox x:Name="ListOccupied" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="23,83,424,10" AutomationProperties.Name="ListOccupied" MaxHeight="315">
+                    <ListBox x:Name="ListOccupied" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="23,83,424,10" AutomationProperties.Name="ListOccupied" MaxHeight="315" MaxWidth="347" Width="347">
                         <ListBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF00E3DB"/>
@@ -136,7 +136,7 @@
                             </LinearGradientBrush>
                         </ListBox.Background>
                     </ListBox>
-                    <ListBox x:Name="ListReserved" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="426,83,21,10" AutomationProperties.Name="ListReserved" MaxHeight="315">
+                    <ListBox x:Name="ListReserved" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="426,83,21,10" AutomationProperties.Name="ListReserved" MaxHeight="315" Height="312" MaxWidth="347" Width="347">
                         <ListBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF00E3DB"/>

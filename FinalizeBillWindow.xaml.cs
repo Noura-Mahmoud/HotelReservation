@@ -26,7 +26,7 @@ namespace Start
             InitializeComponent();
             List<string> paymentType = new List<string>() { "Debit", "Credit", "Cash"};
             ComboPaymentType.ItemsSource = paymentType;
-            List<int> Months = Enumerable.Range(1, 13).ToList();
+            List<int> Months = Enumerable.Range(1, 12).ToList();
             ComboMonth.ItemsSource = Months;
             List<int> Years = Enumerable.Range(1990, DateTime.Now.Year).ToList();
             ComboYear.ItemsSource = Years;
@@ -39,6 +39,7 @@ namespace Start
             {
                 paymentDetails = new Payment();
                 //double.TryParse(lblReservationBill.Content.ToString(), out double roomBill);
+                //lblReservationBill,lblFoodBill got their values from the parent window 
                 double roomBill = Convert.ToDouble(lblReservationBill.Content.ToString());
                 double roomTax = roomBill * 0.07;
                 int.TryParse(lblFoodBill.Content.ToString(), out int foodBill);
@@ -75,49 +76,34 @@ namespace Start
 
         private void OnChangingMonth(object sender, SelectionChangedEventArgs e)
         {
-            //lblCardType.Content = txtPaymentCardNumber.Text.Substring(1, 1);
-            //if (txtPaymentCardNumber.Text.Substring(1, 1) == "3")
-            //{
-            //    lblCardType.Content = "AmericanExpress";
-            //}
-            //else if (txtPaymentCardNumber.Text.Substring(1, 1) == "4")
-            //{
-            //    lblCardType.Content = "Visa";
-            //}
-            //else if (txtPaymentCardNumber.Text.Substring(1, 1) == "5")
-            //{
-            //    lblCardType.Content = "MasterCard";
-            //}
-            //else if (txtPaymentCardNumber.Text.Substring(1, 1) == "6")
-            //{
-            //    lblCardType.Content = "Discover";
-            //}
-            //else
-            //    lblCardType.Content = "Unknown";
-        }
+            string month = ComboMonth.SelectedValue.ToString();
+            // changes according to the second digit
 
-        private void OnLeaveCardNumber(object sender, RoutedEventArgs e)
-        {
-            string cardNum = KeepNumbersOnly(txtPaymentCardNumber.Text);
-            txtPaymentCardNumber.Text = string.Format("{0:0000-0000-0000-0000}", cardNum);
-            if (txtPaymentCardNumber.Text.Substring(1, 1) == "3")
+            if (month.Substring(0, 1) == "3")
             {
                 lblCardType.Content = "AmericanExpress";
             }
-            else if (txtPaymentCardNumber.Text.Substring(1, 1) == "4")
+            else if (month.Substring(0, 1) == "4")
             {
                 lblCardType.Content = "Visa";
             }
-            else if (txtPaymentCardNumber.Text.Substring(1, 1) == "5")
+            else if (month.Substring(0, 1) == "5")
             {
                 lblCardType.Content = "MasterCard";
             }
-            else if (txtPaymentCardNumber.Text.Substring(1, 1) == "6")
+            else if (month.Substring(0, 1) == "6")
             {
                 lblCardType.Content = "Discover";
             }
             else
                 lblCardType.Content = "Unknown";
+        }
+
+        private void OnLeaveCardNumber(object sender, RoutedEventArgs e)
+        {
+            string cardNum = KeepNumbersOnly(txtPaymentCardNumber.Text.Replace("-", ""));
+            string output = cardNum.Substring(0, 4) + "-" + cardNum.Substring(4, 4) + "-" + cardNum.Substring(8, 4);
+            txtPaymentCardNumber.Text = output;
         }
 
         public string KeepNumbersOnly(string str)

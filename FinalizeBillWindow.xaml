@@ -8,7 +8,7 @@
         Title="FinalizeBillWindow" Height="450" Width="800">
     <Grid>
         <Button x:Name="BtnBillNext" Content="Next" HorizontalAlignment="Left" Margin="471,337,0,0" VerticalAlignment="Top" Height="44" Width="129" FontWeight="Bold" FontSize="20" FontFamily="Century" Click="OnClickBtnBillNext"/>
-        <ComboBox x:Name="ComboPaymentType" Text="Payement Type" HorizontalAlignment="Left" Margin="52,230,0,0" VerticalAlignment="Top" Width="163" Height="34" AutomationProperties.HelpText="Payement" IsEditable="True" FontSize="16"/>
+        <ComboBox x:Name="ComboPaymentType" Text="Payement Type" HorizontalAlignment="Left" Margin="52,230,0,0" VerticalAlignment="Top" Width="163" Height="34" AutomationProperties.HelpText="Payement" IsEditable="True" FontSize="16" SelectionChanged="OnChangingPaymentType"/>
         <ComboBox x:Name="ComboMonth" HorizontalAlignment="Left" Margin="52,292,0,0" VerticalAlignment="Top" Width="82" Height="23" IsEditable="True" Text="MM" SelectionChanged="OnChangingMonth"/>
         <ComboBox x:Name="ComboYear" HorizontalAlignment="Left" Margin="147,290,0,0" VerticalAlignment="Top" Width="71" Height="25" IsEditable="True" Text="YY"/>
         <TextBox x:Name="txtCVC" HorizontalAlignment="Left" Margin="229,290,0,0" TextWrapping="Wrap" Text="CVC" VerticalAlignment="Top" Width="73" Height="25"/>
@@ -18,13 +18,13 @@
         <Label HorizontalAlignment="Left" Margin="52,106,0,0" VerticalAlignment="Top" Height="38" Width="484" FontSize="18" Content="Food Bill                                                                              $"/>
         <Label HorizontalAlignment="Left" Margin="361,144,0,0" VerticalAlignment="Top" Height="38" Width="175" FontSize="18" Content="Tax                        $"/>
         <Label HorizontalAlignment="Left" Margin="361,177,0,0" VerticalAlignment="Top" Height="38" Width="175" FontSize="18" Content="Total                    $" FontWeight="Bold"/>
-        <Label Content="Card Type:" HorizontalAlignment="Left" Margin="361,289,0,0" VerticalAlignment="Top" Width="87" FontWeight="Bold" FontSize="14"/>
-        <Label x:Name="lblReservationBill" HorizontalAlignment="Left" Margin="439,24,0,0" VerticalAlignment="Top" Height="30" Width="58"/>
-        <Label x:Name="lblCurrentBill" HorizontalAlignment="Left" Margin="439,67,0,0" VerticalAlignment="Top" Height="30" Width="58"/>
-        <Label x:Name="lblFoodBill"  HorizontalAlignment="Left" Margin="437,107,0,0" VerticalAlignment="Top" Height="30" Width="58"/>
-        <Label x:Name="lblTax"  HorizontalAlignment="Left" Margin="437,145,0,0" VerticalAlignment="Top" Height="30" Width="58"/>
-        <Label x:Name="lblTotal" HorizontalAlignment="Left" Margin="437,178,0,0" VerticalAlignment="Top" Height="30" Width="58" FontWeight="Bold" FontSize="16"/>
-        <Label x:Name="lblCardType" Content="" HorizontalAlignment="Left" Margin="448,292,0,0" VerticalAlignment="Top" Width="62"/>
+        <Label x:Name="cardTypeLbl" Content="Card Type:" HorizontalAlignment="Left" Margin="361,289,0,0" VerticalAlignment="Top" Width="87" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblReservationBill" HorizontalAlignment="Left" Margin="439,24,0,0" VerticalAlignment="Top" Height="30" Width="71"/>
+        <Label x:Name="lblCurrentBill" HorizontalAlignment="Left" Margin="439,67,0,0" VerticalAlignment="Top" Height="30" Width="71"/>
+        <Label x:Name="lblFoodBill"  HorizontalAlignment="Left" Margin="437,107,0,0" VerticalAlignment="Top" Height="30" Width="73"/>
+        <Label x:Name="lblTax"  HorizontalAlignment="Left" Margin="437,145,0,0" VerticalAlignment="Top" Height="30" Width="73"/>
+        <Label x:Name="lblTotal" HorizontalAlignment="Left" Margin="437,178,0,0" VerticalAlignment="Top" Height="30" Width="73" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="lblCardType" Content="" HorizontalAlignment="Left" Margin="448,292,0,0" VerticalAlignment="Top" Width="125" Height="26"/>
 
     </Grid>
 </Window>

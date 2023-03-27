@@ -67,8 +67,8 @@ namespace Start
 
                 Context = new HotelContext();
                 Context.Reservations.Load();
-                EntryDate.DisplayDate = DateTime.Today;
-                DepartureDate.DisplayDate = DateTime.Today.AddDays(1);
+                EntryDate.SelectedDate = DateTime.Today;
+                DepartureDate.SelectedDate = DateTime.Today.AddDays(1);
                 //lblChoices.Foreground = Brushes.Black;
                 btnDelete.Visibility = Visibility.Collapsed;
                 ComboEditReservation.Visibility = Visibility.Collapsed;
@@ -77,13 +77,13 @@ namespace Start
                 List<string> RoomType = new List<string>() { "Single", "Double", "Twin", "Duplex", "Suite" };
                 ComboRoom.ItemsSource = RoomType;
                 // For combobox of Days
-                List<int> Days = Enumerable.Range(1, 32).ToList();
+                List<int> Days = Enumerable.Range(1, 31).ToList();
                 ComboDay.ItemsSource = Days;
                 // For combobox of Months
-                List<int> Months = Enumerable.Range(1, 13).ToList();
+                List<int> Months = Enumerable.Range(1, 12).ToList();
                 comboMonth.ItemsSource = Months;
                 // For combobox of NoOfGuests
-                List<int> NoOfGuests = Enumerable.Range(1, 7).ToList();
+                List<int> NoOfGuests = Enumerable.Range(1, 6).ToList();
                 ComboNoOfGuests.ItemsSource = NoOfGuests;
                 // For combobox of FloorNo
                 List<int> FloorNo = Enumerable.Range(1, 6).ToList();
@@ -398,8 +398,8 @@ namespace Start
             reservation.CardNumber = payment.paymentCardNumber;
             reservation.CardExp = payment.MM_YY_Of_Card;
             reservation.CardCvc = payment.CVC_Of_Card;
-            reservation.ArrivalTime = Convert.ToDateTime(EntryDate.Text);
-            reservation.LeavingTime = Convert.ToDateTime(DepartureDate.Text);
+            reservation.ArrivalTime = Convert.ToDateTime(EntryDate.SelectedDate);
+            reservation.LeavingTime = Convert.ToDateTime(DepartureDate.SelectedDate);
             reservation.CheckIn = (bool)CheckCheckin.IsChecked;
             reservation.BreakFast = menuResponse.breakfastQuantity;
             reservation.Lunch = menuResponse.lunchQuantity;
@@ -418,27 +418,27 @@ namespace Start
                 if (ComboRoom.SelectedValue.Equals("Single"))
                 {
                     roomPrice = 149;
-                    ComboFloorNo.SelectedValue = "1";
+                    ComboFloorNo.SelectedValue = 1;
                 }
                 else if (ComboRoom.SelectedValue.Equals("Double"))
                 {
                     roomPrice = 299;
-                    ComboFloorNo.SelectedValue = "2";
+                    ComboFloorNo.SelectedValue = 2;
                 }
                 else if (ComboRoom.SelectedValue.Equals("Twin"))
                 {
                     roomPrice = 349;
-                    ComboFloorNo.SelectedValue = "3";
+                    ComboFloorNo.SelectedValue = 3;
                 }
                 else if (ComboRoom.SelectedValue.Equals("Duplex"))
                 {
                     roomPrice = 399;
-                    ComboFloorNo.SelectedValue = "4";
+                    ComboFloorNo.SelectedValue = 4;
                 }
                 else if (ComboRoom.SelectedValue.Equals("Suite"))
                 {
                     roomPrice = 499;
-                    ComboFloorNo.SelectedValue = "5";
+                    ComboFloorNo.SelectedValue = 5;
                 }
             }
             catch (Exception ex)
@@ -563,8 +563,11 @@ namespace Start
                 {
                     txtFName.Text = currentReservation.FirstName;
                     txtLName.Text = currentReservation.LastName;
-                    ComboDay.Text = currentReservation.BirthDay.Substring(0, currentReservation.BirthDay.IndexOf('-')).Trim();
-                    comboMonth.Text = currentReservation.BirthDay.Substring(currentReservation.BirthDay.IndexOf('-') + 1, 2).Trim();
+                    //ComboDay.Text = currentReservation.BirthDay.Substring(0, currentReservation.BirthDay.IndexOf('-')).Trim();
+                    //comboMonth.Text = currentReservation.BirthDay.Substring(currentReservation.BirthDay.IndexOf('-') + 1, 1).Trim();
+                    comboMonth.Text = currentReservation.BirthDay.Substring(0, currentReservation.BirthDay.IndexOf('-')).Trim();
+                    ComboDay.Text = currentReservation.BirthDay.Substring(currentReservation.BirthDay.IndexOf('-') + 1, 1).Trim();
+
                     txtYear.Text = currentReservation.BirthDay.Substring(currentReservation.BirthDay.Length - Math.Min(4, currentReservation.BirthDay.Length)).Trim();
 
                     ComboGender.Text = currentReservation.Gender.Trim();
@@ -588,8 +591,8 @@ namespace Start
                     payment.paymentCardNumber = currentReservation.CardNumber;
                     payment.MM_YY_Of_Card = currentReservation.CardExp;
                     payment.CVC_Of_Card = currentReservation.CardCvc;
-                    EntryDate.Text = currentReservation.ArrivalTime.ToString();
-                    DepartureDate.Text = currentReservation.LeavingTime.ToString();
+                    EntryDate.SelectedDate = currentReservation.ArrivalTime;
+                    DepartureDate.SelectedDate = currentReservation.LeavingTime;
                     CheckCheckin.IsChecked = currentReservation.CheckIn;
                     menuResponse.breakfastQuantity = currentReservation.BreakFast;
                     menuResponse.lunchQuantity = currentReservation.Lunch;
@@ -659,6 +662,7 @@ namespace Start
                 ReservationTabInitializations();
                 LoadDataToGridView();
                 LoadRoomAvailablityTab();
+
             }
             catch (Exception ex)
             {
