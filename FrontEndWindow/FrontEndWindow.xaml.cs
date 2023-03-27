@@ -69,7 +69,6 @@ namespace Start
                 Context.Reservations.Load();
                 EntryDate.SelectedDate = DateTime.Today;
                 DepartureDate.SelectedDate = DateTime.Today.AddDays(1);
-                //lblChoices.Foreground = Brushes.Black;
                 btnDelete.Visibility = Visibility.Collapsed;
                 ComboEditReservation.Visibility = Visibility.Collapsed;
                 btnUpdate.Visibility = Visibility.Collapsed;
@@ -617,7 +616,6 @@ namespace Start
 
                     comboMonth.SelectedValue = currentReservation.BirthDay.Substring(0, currentReservation.BirthDay.IndexOf('-')).Trim();
                     ComboDay.SelectedValue = int.Parse( currentReservation.BirthDay.Substring(currentReservation.BirthDay.IndexOf('-') + 1, 1).Trim());
-                    lblChoices.Content = currentReservation.BirthDay.Substring(currentReservation.BirthDay.IndexOf('-') + 1, 1).Trim();
 
                     txtYear.Text = currentReservation.BirthDay.Substring(currentReservation.BirthDay.Length - Math.Min(4, currentReservation.BirthDay.Length)).Trim();
 
@@ -674,9 +672,9 @@ namespace Start
 
         private void OnClickBtnUpdate(object sender, RoutedEventArgs e)
         {
-            SaveReservationData();
             try
             {
+                SaveReservationData();
                 var toBeUpdated = Context.Reservations.FirstOrDefault(r => r.Id == reservation.Id);
                 //if(toBeUpdated != null)
                 //{
@@ -695,7 +693,7 @@ namespace Start
                     toBeUpdated.ZipCode = reservation.ZipCode;
                     toBeUpdated.RoomType = reservation.RoomType;
                     toBeUpdated.RoomFloor = reservation.RoomFloor;
-                    toBeUpdated.RoomNumber = reservation.RoomNumber;
+                    toBeUpdated.RoomNumber = reservation.RoomNumber ?? "";
                     toBeUpdated.TotalBill = reservation.TotalBill;
                     toBeUpdated.PaymentType = reservation.PaymentType;
                     toBeUpdated.CardType = reservation.CardType;
@@ -751,6 +749,38 @@ namespace Start
             {
                 MessageBox.Show(ex.Message);
                 //throw;
+            }
+        }
+
+        private void State_changed(object sender, SelectionChangedEventArgs e)
+        {
+            if(ComboState.SelectedValue != null)
+            {
+                switch (ComboState.SelectedValue.ToString().Trim())
+                {
+                    case "New York":
+                    case "Arkansas":
+                    case "California":
+                    case "Louisiana":
+                        txtZipCode.Text = "11218";
+                        break;
+                    case "Alaska":
+                    case "Alabama":
+                        txtZipCode.Text = "11219";
+                        break;
+                    case "Arizona":
+                        txtZipCode.Text = "89998";
+                        break;
+                    case "Nevada":
+                        txtZipCode.Text = "14567";
+                        break;
+                    case "Montana Nebraska":
+                        txtZipCode.Text = "18892";
+                        break;
+                    default:
+                        txtZipCode.Text = "";
+                        break;
+                }
             }
         }
     }

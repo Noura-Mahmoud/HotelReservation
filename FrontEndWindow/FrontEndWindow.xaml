@@ -35,7 +35,7 @@
                             <TextBox x:Name="txtStreet" TextWrapping="Wrap" AutomationProperties.Name="txtStreet" Margin="24,312,43,12" Width="215" MaxWidth="215"/>
                             <TextBox x:Name="txtCity" TextWrapping="Wrap"  AutomationProperties.Name="txtCity" Margin="28,342,177,-12"/>
                             <TextBox x:Name="txtSuite" TextWrapping="Wrap" AutomationProperties.Name="txtSuite" Margin="125,342,65,-10"/>
-                            <ComboBox x:Name="ComboState"  AutomationProperties.HelpText="State" AutomationProperties.Name="comboState" Text="State" IsEditable="True" Margin="24,370,166,-41" MaxWidth="92"/>
+                            <ComboBox x:Name="ComboState"  AutomationProperties.HelpText="State" AutomationProperties.Name="comboState" Text="State" IsEditable="True" Margin="24,370,166,-41" MaxWidth="92" SelectionChanged="State_changed"/>
                             <TextBox x:Name="txtZipCode" TextWrapping="Wrap" AutomationProperties.Name="txtZipCode" Margin="125,370,68,-41"/>
                         </Grid>
                     </Border>
