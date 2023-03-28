@@ -75,7 +75,7 @@ namespace Start
                 //Context.Reservations.Load()
                 List<string> RoomType = new List<string>() { "Single", "Double", "Twin", "Duplex", "Suite" };
                 ComboRoom.ItemsSource = RoomType;
-                List<string> Genders = new List<string>() { "Male", "Female"};
+                List<string> Genders = new List<string>() { "Male", "Female", "Other"};
                 ComboGender.ItemsSource = Genders;
                 // For combobox of Days
                 List<int> Days = Enumerable.Range(1, 31).ToList();
@@ -102,7 +102,19 @@ namespace Start
                 ComboState.SelectedValuePath = "State";
                 // Get available rooms 
                 var occupiedRooms = Context.Reservations.Where(r => r.CheckIn == false).ToList();
-                ComboRoomNo.ItemsSource = occupiedRooms;
+                var reservedRooms = Context.Reservations.Where(r => r.CheckIn == true).ToList();
+                //List<int> listReservedRoomsNumbers = new List<int>();
+                foreach(var room in reservedRooms)
+                {
+                    //listReservedRoomsNumbers.Add(int.Parse( room.RoomNumber));
+                    var neglectRoom = occupiedRooms.Find(r => r.RoomNumber == room.RoomNumber);
+                    if(neglectRoom!= null)
+                    {
+                        occupiedRooms.Remove(neglectRoom);
+                    }
+                }
+
+                ComboRoomNo.ItemsSource = occupiedRooms.Except(reservedRooms);
                 ComboRoomNo.DisplayMemberPath = "RoomNumber";
                 ComboRoomNo.SelectedValuePath = "RoomNumber";
 
@@ -187,8 +199,18 @@ namespace Start
         {
             try
             {
-                var reservedRooms = Context.Reservations.Where(r => r.CheckIn == true).ToList();
                 var occupiedRooms = Context.Reservations.Where(r => r.CheckIn == false).ToList();
+                var reservedRooms = Context.Reservations.Where(r => r.CheckIn == true).ToList();
+                //List<int> listReservedRoomsNumbers = new List<int>();
+                foreach (var room in reservedRooms)
+                {
+                    //listReservedRoomsNumbers.Add(int.Parse( room.RoomNumber));
+                    var neglectRoom = occupiedRooms.Find(r => r.RoomNumber == room.RoomNumber);
+                    if (neglectRoom != null)
+                    {
+                        occupiedRooms.Remove(neglectRoom);
+                    }
+                }
                 //ListOccupied.Items.Clear();
                 //ListReserved.Items.Clear();
                 ListOccupied.ItemsSource = occupiedRooms;
@@ -205,6 +227,7 @@ namespace Start
             
             ClearTextBoxes(GridReservationInputs);
             ClearComboBoxes(GridReservationInputs);
+            ReservationTabInitializations(); /////////////
             btnUpdate.Visibility = Visibility.Collapsed;
             btnDelete.Visibility = Visibility.Collapsed;
             ComboEditReservation.Visibility = Visibility.Collapsed;
@@ -401,6 +424,10 @@ namespace Start
         private void SaveReservationData()
         {
             reservation = new Reservation();
+            if(ComboEditReservation.SelectedValue!= null)
+            {
+                reservation.Id = int.Parse(ComboEditReservation.SelectedValue.ToString());
+            }
             reservation.FirstName = txtFName.Text;
             reservation.LastName = txtLName.Text;
             int.TryParse(txtYear.Text, out int year);
@@ -597,8 +624,10 @@ namespace Start
 
         private void OnChangingReservationToBeEdited(object sender, SelectionChangedEventArgs e)
         {
+            
             if(ComboEditReservation.SelectedValue != null)
             {
+                reservation.Id = int.Parse(ComboEditReservation.SelectedValue.ToString());
                 FillEditingReservationData();
             }
         }
