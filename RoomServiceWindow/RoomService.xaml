@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Start"
         mc:Ignorable="d"
-         Title="Room Service" Height="450" Width="800" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="450">
+         Title="Room Service" Height="450" Width="800" SizeToContent="WidthAndHeight" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="450" MaxWidth="800" MaxHeight="480">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FFFAF8FA"/>
@@ -14,13 +14,8 @@
     </Window.Background>
     <!--Install the "MahApps.Metro" package using the NuGet Package Manager-->
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="224*"/>
-            <ColumnDefinition Width="93*"/>
-            <ColumnDefinition Width="38*"/>
-            <ColumnDefinition Width="445*"/>
-        </Grid.ColumnDefinitions>
-        <TabControl Grid.ColumnSpan="4">
+
+        <TabControl>
             <TabControl.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -28,14 +23,14 @@
                 </LinearGradientBrush>
             </TabControl.Background>
             <TabItem Header="TODO*">
-                <Grid>
+                <Grid x:Name="gridRoomService">
                     <Grid.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FFFAFAFA"/>
                             <GradientStop Color="#FFC4A1DD" Offset="1"/>
                         </LinearGradientBrush>
                     </Grid.Background>
-                    <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="565,28,10,44">
+                    <ListBox x:Name="listboxReservations" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="565,28,10,44" SelectionChanged="listboxReservations_SelectionChanged">
                         <ListBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="White"/>
@@ -44,43 +39,38 @@
                         </ListBox.Background>
                     </ListBox>
                     <Label Content="On the line" HorizontalAlignment="Left" Margin="565,3,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnUpdateChanges" Content="Update changes" HorizontalAlignment="Left" Margin="610,371,0,0" VerticalAlignment="Top" Width="128" FontSize="16" Foreground="#FF1726AE" FontWeight="Bold" FontFamily="Calibri"/>
+                    <Button x:Name="btnUpdateChanges" Content="Update changes" HorizontalAlignment="Left" Margin="610,371,0,0" VerticalAlignment="Top" Width="128" FontSize="16" Foreground="#FF1726AE" FontWeight="Bold" FontFamily="Calibri" Click="btnUpdateChanges_Click"/>
                     <Label Content="Name" HorizontalAlignment="Left" Margin="23,46,0,0" VerticalAlignment="Top"/>
                     <Label Content="Phone Number" HorizontalAlignment="Left" Margin="23,100,0,0" VerticalAlignment="Top"/>
                     <Label Content="Floor #" HorizontalAlignment="Left" Margin="161,150,0,0" VerticalAlignment="Top"/>
                     <Label Content="Room #" HorizontalAlignment="Left" Margin="23,204,0,0" VerticalAlignment="Top"/>
                     <Label Content="Room Type" HorizontalAlignment="Left" Margin="23,150,0,0" VerticalAlignment="Top"/>
-                    <TextBox TextWrapping="Wrap" Margin="38,126,635,262"/>
-                    <TextBox TextWrapping="Wrap" Margin="34,181,639,207"/>
-                    <TextBox TextWrapping="Wrap" Margin="164,181,509,207"/>
-                    <TextBox TextWrapping="Wrap" Margin="34,230,639,158"/>
+                    <TextBox x:Name="txtPhone" TextWrapping="Wrap" Margin="38,126,635,262" MaxHeight="19"/>
+                    <TextBox x:Name="txtRoomType" TextWrapping="Wrap" Margin="34,181,639,207" MaxHeight="19"/>
+                    <TextBox x:Name="txtFloorNumber" TextWrapping="Wrap" Margin="164,181,509,207" MaxHeight="19"/>
+                    <TextBox x:Name="txtRoomNumber" TextWrapping="Wrap" Margin="34,230,639,158" MaxHeight="19"/>
                     <Border BorderBrush="Black" BorderThickness="1" Margin="296,28,234,44">
-                        <Label Content="Todo" Margin="9,-15,201,320">
-                            <Label.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#FFDDD7EE"/>
-                                    <GradientStop Color="#FFF9F8F8" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Label.Background>
-                        </Label>
+                        <Grid>
+                            <CheckBox x:Name="CheckFoodSupply" Content="Food/supply status" HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Width="181" Checked="OnCheckedFoodSupply" Margin="56,209,0,0"/>
+                            <Button x:Name="btnChangeFoodSelection" Content="Change Food selection" HorizontalAlignment="Center" Margin="0,277,0,0" VerticalAlignment="Top" Width="176" FontSize="16" Foreground="#FF3716E8" FontWeight="Bold" FontFamily="Calibri" Click="btnChangeFoodSelection_Click"/>
+                            <Label Content="Dinner [QTY]" HorizontalAlignment="Left" Margin="28,70,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Breakfast [QTY]" HorizontalAlignment="Left" Margin="33,29,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Lunch [QTY]" HorizontalAlignment="Left" Margin="146,29,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtBreakfast" TextWrapping="Wrap" Margin="39,46,145,257" MaxHeight="22"/>
+                            <TextBox x:Name="txtLunch" TextWrapping="Wrap" Margin="146,33,43,241" MaxHeight="22"/>
+                            <TextBox x:Name="txtDinner" TextWrapping="Wrap" Margin="39,97,145,205" MaxHeight="22"/>
+                            <CheckBox x:Name="checkCleaning" Content="Cleaning" Margin="6,166,156,134"/>
+                            <CheckBox x:Name="checkTowels" Content="Towels" Margin="75,167,99,139"/>
+                            <CheckBox x:Name="checkSurprise" Content="Sweetest Surprise" Margin="134,167,-46,139"/>
+                        </Grid>
                     </Border>
-                    <Button x:Name="btnChangeFoodSelection" Content="Change Food selection" HorizontalAlignment="Left" Margin="343,322,0,0" VerticalAlignment="Top" Width="176" FontSize="16" Foreground="#FF3716E8" FontWeight="Bold" FontFamily="Calibri"/>
-                    <Label Content="Lunch [QTY]" HorizontalAlignment="Left" Margin="432,59,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Breakfast [QTY]" HorizontalAlignment="Left" Margin="317,59,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Dinner [QTY]" HorizontalAlignment="Left" Margin="319,100,0,0" VerticalAlignment="Top"/>
-                    <TextBox TextWrapping="Wrap" Margin="40,73,633,315"/>
-                    <TextBox TextWrapping="Wrap" Margin="172,73,501,315"/>
-                    <TextBox TextWrapping="Wrap" Margin="324,82,385,302"/>
-                    <TextBox TextWrapping="Wrap" Margin="438,82,271,302"/>
-                    <TextBox TextWrapping="Wrap" Margin="324,122,385,262"/>
-                    <CheckBox Content="Cleaning" Margin="302,172,411,217"/>
-                    <CheckBox Content="Towels" Margin="388,172,331,217"/>
-                    <CheckBox Content="Sweetest Surprise" Margin="447,172,232,217"/>
+                    <TextBox x:Name="txtLName" TextWrapping="Wrap" Margin="172,73,501,315" MaxHeight="19"/>
+                    <TextBox x:Name="txtFName" TextWrapping="Wrap" Margin="40,67,633,312" MaxHeight="19" UndoLimit="96" Height="18.08"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Overview">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" CanUserResizeColumns="False" CanUserResizeRows="False" Background="#FFF0F0F0"/>
+                    <DataGrid x:Name="overviewGrid" d:ItemsSource="{d:SampleData ItemCount=5}" CanUserResizeColumns="False" CanUserResizeRows="False" Background="#FFF0F0F0"/>
                 </Grid>
             </TabItem>
         </TabControl>

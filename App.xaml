@@ -2,8 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Start"
-             StartupUri="FrontEndWindow/FrontEndWindow.xaml">
-            <!--StartupUri="Login/MainWindow.xaml">-->
+             StartupUri="Login/MainWindow.xaml">
+             <!--StartupUri="RoomServiceWindow/RoomService.xaml">-->
+            <!--StartupUri="FrontEndWindow/FrontEndWindow.xaml">-->
     <Application.Resources>
          
     </Application.Resources>

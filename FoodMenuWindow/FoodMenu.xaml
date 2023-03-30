@@ -35,7 +35,7 @@
                 <TextBox x:Name="txtDinnerQuantity" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="45,123,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="Quantity?"/>
             </Grid>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" Margin="578,49,42,139">
+        <Border x:Name="needsBorder" BorderBrush="Black" BorderThickness="1" Margin="578,49,42,139">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="13*"/>
