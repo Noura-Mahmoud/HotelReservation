@@ -27,7 +27,7 @@
         <TextBox x:Name="txtUsername" TextWrapping="Wrap" Margin="92,140,82,251" Grid.Column="3" Grid.ColumnSpan="2" BorderBrush="#FFACC1FF" BorderThickness="2,2,2,2" TextChanged="UsernameChanged" VerticalContentAlignment="Center" Padding="10,0,10,0" FontSize="16"/>
         <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="92,253,0,0" VerticalAlignment="Top" Height="46" BorderThickness="2,2,2,2" BorderBrush="#FFACC1FF" TargetUpdated="PasswordChanged" VerticalContentAlignment="Center" Padding="10,0,10,0" FontSize="16" Width="393"/>
         <Button x:Name="btnSignIn" Content="Sign in" Margin="227,342,239,62" FontWeight="Bold" FontSize="14" Click="btnSigninClicked" Background="#FF89A7B5" Foreground="#FF010014" FontFamily="Cambria"/>
-        <Button x:Name="btnLicense" Content="license" HorizontalAlignment="Left" Margin="491,409,0,0" Width="76" Height="25" VerticalAlignment="Top" Click="ShowLicense" Background="#FFF4F4F4"/>
+        <Button x:Name="btnLicense" Content="license" HorizontalAlignment="Left" Margin="491,409,0,0" Width="76" Height="25" VerticalAlignment="Top" Click="ShowLicense" Background="#FF9ABDCB" FontFamily="Cambria"/>
         <TextBlock x:Name="txtBlockUsrnm" TextWrapping="Wrap" Text="Username" Margin="129,146,106,258" Grid.Column="3" Grid.ColumnSpan="2" FontSize="16" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left">
             <TextBlock.Foreground>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
