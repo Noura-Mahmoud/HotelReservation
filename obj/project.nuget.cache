@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N8RPZhezacgyEpd8I76Nkkcg0ipWHm2p2Uy/DgoXn772kbLxuFlPyLx0zXjNhCdmx3oKu5mPJ3G+ach0hUSbBA==",
+  "dgSpecHash": "Hloa2HzWIQiMJuTJKiDjVDoTLmJmXaFfEA5EsxAAZDARelDUxl8W0TNVyr8t6sIBs/YiAmmPxQKcJyehLRPv3A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\noura\\Downloads\\HotelReservation-master\\Start.csproj",
+  "projectFilePath": "G:\\ITI_mobile cross\\C#\\C# final project\\HotelReservation-master\\Start.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\noura\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\noura\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

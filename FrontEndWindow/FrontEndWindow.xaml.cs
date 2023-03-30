@@ -63,6 +63,7 @@ namespace Start
             try
             {
                 ClearTextBoxes(GridReservationInputs);
+
                 //ClearComboBoxes(GridReservationInputs);
 
                 Context = new HotelContext();
@@ -285,6 +286,7 @@ namespace Start
                 {
                     ComboBox comboBox = (ComboBox)child;
                     comboBox.SelectedIndex = -1;
+                    comboBox.Text = string.Empty;
                 }
                 else
                 {
@@ -453,7 +455,8 @@ namespace Start
             reservation.RoomFloor = ComboFloorNo.SelectedValue.ToString();
             //int.TryParse(ComboRoomNo.SelectedValue.ToString(), out int roomNo);
             //MessageBox.Show(ComboRoomNo.SelectedValue.ToString());
-            reservation.RoomNumber = ComboRoomNo.SelectedValue.ToString();
+            reservation.RoomNumber = ComboRoomNo.Text;
+            //reservation.RoomNumber = ComboRoomNo.SelectedValue.ToString();
             reservation.TotalBill = (float)payment.Total;
             reservation.PaymentType = payment.PaymentType;
             reservation.CardType = payment.CardType;
@@ -662,7 +665,8 @@ namespace Start
                     ComboFloorNo.SelectedValue = int.Parse(currentReservation.RoomFloor);
                     //ComboFloorNo.Text = currentReservation.RoomFloor;
                     //int.TryParse(ComboRoomNo.SelectedValue.ToString(), out int roomNo);
-                    ComboRoomNo.SelectedValue = currentReservation.RoomNumber;
+                    ComboRoomNo.Text = currentReservation.RoomNumber;
+                    //ComboRoomNo.SelectedValue = currentReservation.RoomNumber;
                     payment.Total = currentReservation.TotalBill;
                     payment.PaymentType = currentReservation.PaymentType;
                     payment.CardType = currentReservation.CardType;

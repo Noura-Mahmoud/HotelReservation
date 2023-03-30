@@ -61,7 +61,7 @@
                             <TextBox x:Name="txtDinner" TextWrapping="Wrap" Margin="39,97,145,205" MaxHeight="22"/>
                             <CheckBox x:Name="checkCleaning" Content="Cleaning" Margin="6,166,156,134"/>
                             <CheckBox x:Name="checkTowels" Content="Towels" Margin="75,167,99,139"/>
-                            <CheckBox x:Name="checkSurprise" Content="Sweetest Surprise" Margin="134,167,-46,139"/>
+                            <CheckBox x:Name="checkSurprise" Content="Sweetest Surprise" Margin="140,167,-52,139"/>
                         </Grid>
                     </Border>
                     <TextBox x:Name="txtLName" TextWrapping="Wrap" Margin="172,73,501,315" MaxHeight="19"/>

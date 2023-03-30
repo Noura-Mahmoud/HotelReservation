@@ -49,6 +49,9 @@ namespace Start
             ClearComboBoxes(gridRoomService);
             ClearTextBoxes(gridRoomService);
             ClearCheckBoxes(gridRoomService);
+            checkCleaning.Content = "Cleaning";
+            checkTowels.Content = "Towels";
+            checkSurprise.Content = "Sweetest Surprise";
         }
 
         private void loadDataToGrid()

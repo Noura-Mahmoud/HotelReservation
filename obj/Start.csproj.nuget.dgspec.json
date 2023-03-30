@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\noura\\Downloads\\HotelReservation-master\\Start.csproj": {}
+    "G:\\ITI_mobile cross\\C#\\C# final project\\HotelReservation-master\\Start.csproj": {}
   },
   "projects": {
-    "C:\\Users\\noura\\Downloads\\HotelReservation-master\\Start.csproj": {
+    "G:\\ITI_mobile cross\\C#\\C# final project\\HotelReservation-master\\Start.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\noura\\Downloads\\HotelReservation-master\\Start.csproj",
+        "projectUniqueName": "G:\\ITI_mobile cross\\C#\\C# final project\\HotelReservation-master\\Start.csproj",
         "projectName": "Start",
-        "projectPath": "C:\\Users\\noura\\Downloads\\HotelReservation-master\\Start.csproj",
+        "projectPath": "G:\\ITI_mobile cross\\C#\\C# final project\\HotelReservation-master\\Start.csproj",
         "packagesPath": "C:\\Users\\noura\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\noura\\Downloads\\HotelReservation-master\\obj\\",
+        "outputPath": "G:\\ITI_mobile cross\\C#\\C# final project\\HotelReservation-master\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
